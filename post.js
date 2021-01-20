@@ -99,6 +99,13 @@ nextPage1.addEventListener("click",
 
     daySelector.select(new Date().getDate());
 
+    //SUCCESS MESSAGE AUTOMATIC CLOSE
+    successBox.style.transform = "scale(0.01)";
+    successBox.style.opacity = "0";
+    if (successBox.style.opacity === "0") {
+      successBox.style.display = "none";
+    }
+
     if (event_name.value == "") {
       error_text.innerHTML = "Please fill in the event name.";
       error.style.display = "block";
@@ -111,7 +118,7 @@ nextPage1.addEventListener("click",
       errorBox.style.transform = "scale(1)";
     } else if (location_name.value == "") {
       error_text.innerHTML = "Please fill in the location name.";
-      error.style.display = "block"; 
+      error.style.display = "block";
       error.style.opacity = "1";
       errorBox.style.transform = "scale(1)";
     } else if (region_value == "") {
@@ -479,4 +486,3 @@ signupForm.addEventListener('submit', (e) => {
   sex_value = "anyone";
   sex_html.innerHTML = "Anyone can join";
 })
-
