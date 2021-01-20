@@ -31,13 +31,13 @@ input[type="radio"] {
 }
 
 .wrapper::-webkit-scrollbar {
-  background: #001427;
+  display: none;
 }
 
-.wrapper::-webkit-scrollbar-thumb {
+/* .wrapper::-webkit-scrollbar-thumb {
   background: #37384b;
   border-radius: 20px;
-}
+} */
 
 li {
   list-style: none;
@@ -715,7 +715,8 @@ header.page-header ul li a:hover {
   margin-left: 80px;
 }
 
-.error-section {
+.error-section,
+.success-section {
   position: fixed;
   /* align-self: flex-end; */
   bottom: 0;
@@ -723,7 +724,8 @@ header.page-header ul li a:hover {
   z-index: 10;
 }
 
-.error {
+.error,
+.success {
   display: none;
   position: relative;
   min-width: 380px;
@@ -735,18 +737,10 @@ header.page-header ul li a:hover {
     display 100ms ease 500ms;
 }
 
-/* @keyframes poof {
-  0% {transform: scale(1.05);}
-  25% {transform: scale(1.2); opacity: 75%;}
-  50% {transform: scale(0.7); opacity: 50%;}
-  75% {transform: scale(0.2); opacity: 25%;}
-  100% {transform: scale(0.01); opacity: 0;}
-} */
-
-.error-box {
+.error-box,
+.success-box {
   width: 100%;
   height: 60px;
-  background: #fc3b3b;
   border-radius: 7px;
   box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.7);
   position: relative;
@@ -757,7 +751,16 @@ header.page-header ul li a:hover {
   justify-content: center;
 }
 
-.error-circle {
+.error-box {
+  background: #fc3b3b;
+}
+
+.success-box {
+  background: #4caa53;
+}
+
+.error-circle,
+.success-circle {
   position: absolute;
   background: #292a45;
   border-radius: 50%;
@@ -776,30 +779,34 @@ header.page-header ul li a:hover {
   z-index: 11;
 }
 
-.error-circle:hover {
+.error-circle:hover,
+.success-circle:hover {
   transform: scale(1.1);
 }
 
-.error-close {
+.error-close,
+.success-close {
   transform: rotate(45deg);
-  font-size: 25px;
+  font-size: 26px;
   color: #fc3b3b;
 }
 
-.error-icon {
+.error-icon,
+.success-icon {
   position: absolute;
-  width: 70px;
-  height: 70px;
-  left: -15px;
-  bottom: -14px;
+  width: 65px;
+  height: 65px;
+  left: -17px;
+  bottom: -10px;
 }
 
-.error-text {
+.error-text,
+.success-text {
   position: relative;
-  font-size: 17px;
+  font-size: 16px;
   color: white;
   font-weight: 400;
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+  /* text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7); */
   margin-left: 40px;
 }
 
@@ -937,11 +944,13 @@ header.page-header ul li a:hover {
     margin: 0;
   }
 
-  .error-box {
+  .error-box,
+  .success-box {
     height: 55px;
   }
 
-  .error-icon {
+  .error-icon,
+  .success-icon {
     width: 60px;
     height: 60px;
     left: -10px;
@@ -1131,27 +1140,32 @@ header.page-header ul li a:hover {
     display: none;
   }
 
-  .error-section {
+  .error-section,
+  .success-section {
     bottom: 4vh;
   }
 
-  .error {
+  .error,
+  .success {
     height: 55px;
     min-width: 300px;
   }
 
-  .error-box {
+  .error-box,
+  .success-box {
     height: 50px;
   }
 
-  .error-icon {
+  .error-icon,
+  .success-icon {
     width: 50px;
     height: 50px;
     left: -5px;
     bottom: -5px;
   }
 
-  .error-text {
+  .error-text,
+  .success-text {
     font-size: 14px;
     font-weight: 500;
   }
@@ -1198,16 +1212,19 @@ header.page-header ul li a:hover {
     margin-top: 10px;
   }
 
-  .error {
+  .error,
+  .success {
     min-width: 250px;
   }
 
-  .error-text {
+  .error-text,
+  .success-text {
     margin-left: 20px;
     font-size: 13px;
   }
 
-  .error-icon {
+  .error-icon,
+  .success-icon {
     left: -10px;
     bottom: -8px;
   }
