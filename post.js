@@ -111,7 +111,7 @@ nextPage1.addEventListener("click",
       errorBox.style.transform = "scale(1)";
     } else if (location_name.value == "") {
       error_text.innerHTML = "Please fill in the location name.";
-      error.style.display = "block";
+      error.style.display = "block"; 
       error.style.opacity = "1";
       errorBox.style.transform = "scale(1)";
     } else if (region_value == "") {
@@ -226,6 +226,19 @@ errorClose.addEventListener('click', () => {
   errorBox.style.opacity = "0";
   if (errorBox.style.opacity === "0") {
     errorBox.style.display = "none";
+  }
+})
+
+let success = document.querySelector('.success');
+let successText = document.querySelector('.success-text');
+let successClose = document.querySelector('.success-circle');
+let successBox = document.querySelector('.success');
+
+successClose.addEventListener('click', () => {
+  successBox.style.transform = "scale(0.01)";
+  successBox.style.opacity = "0";
+  if (successBox.style.opacity === "0") {
+    successBox.style.display = "none";
   }
 })
 
@@ -394,6 +407,11 @@ let doc_id = "";
 //Save data to Firestore
 
 signupForm.addEventListener('submit', (e) => {
+  //SET SUCCESS NOTIFICATION
+  successBox.style.display = "block";
+  successBox.style.transform = "scale(1)";
+  successBox.style.opacity = "1";
+
   e.preventDefault();
 
   db.collection('match').add({
@@ -461,3 +479,4 @@ signupForm.addEventListener('submit', (e) => {
   sex_value = "anyone";
   sex_html.innerHTML = "Anyone can join";
 })
+
