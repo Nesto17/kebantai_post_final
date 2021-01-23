@@ -208,7 +208,7 @@ header.page-header ul li a:hover {
 
   display: grid;
   grid-template-columns: 0.4fr 1fr;
-  grid-template-rows: repeat(3, 145px);
+  grid-template-rows: repeat(3, 150px);
 }
 
 .page-3.page-3-stateA {
@@ -471,7 +471,7 @@ header.page-header ul li a:hover {
 .sport-radio {
   width: 250px;
   height: 65px;
-  background: #11121f;
+  background: #000a14;
   border-radius: 5px;
   overflow: hidden;
   display: flex;
@@ -648,7 +648,7 @@ header.page-header ul li a:hover {
   border-radius: 0.5rem;
   font-size: 14px;
   font-weight: 600;
-  background: #11121f;
+  background: #000a14;
   color: white;
   outline: none;
   border: none;
@@ -691,7 +691,7 @@ header.page-header ul li a:hover {
 .sex-radio {
   width: 145px;
   height: 50px;
-  background: #11121f;
+  background: #000a14;
   border-radius: 5px;
   overflow: hidden;
   display: flex;
@@ -711,8 +711,20 @@ header.page-header ul li a:hover {
 }
 
 .buttons-3 {
-  justify-self: flex-start;
-  margin-left: 80px;
+  justify-self: stretch;
+  align-items: flex-start;
+
+  margin-left: 50px;
+}
+
+.agreement {
+  font-size: 8.3px;
+  color: #8f90a0;
+  background: #000a14;
+  padding: 10px;
+  border-radius: 5px;
+
+  margin-top: 10px;
 }
 
 .error-section,
@@ -955,6 +967,16 @@ header.page-header ul li a:hover {
     height: 60px;
     left: -10px;
     bottom: -8px;
+  }
+
+  .buttons-3 {
+    align-items: center;
+  }
+
+  .agreement {
+    order: -1;
+    margin-bottom: 10px;
+    margin-top: 0;
   }
 }
 
