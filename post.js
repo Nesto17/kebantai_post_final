@@ -54,6 +54,9 @@ menuToggle.addEventListener('click', () => {
   darkBackground.classList.add('active');
 });
 
+//Initialize Realtime Database
+var db_rd = firebase.database()
+
 document.querySelector(".date-submit").addEventListener("click",
   function () {
     document.querySelector(".date-background").style.visibility = "hidden";
@@ -126,6 +129,13 @@ nextPage1.addEventListener("click",
 
     daySelector.select(new Date().getDate());
 
+    //SUCCESS MESSAGE AUTOMATIC CLOSE
+    successBox.style.transform = "scale(0.01)";
+    successBox.style.opacity = "0";
+    if (successBox.style.opacity === "0") {
+      successBox.style.display = "none";
+    }
+
     if (event_name.value == "") {
       error_text.innerHTML = "Please fill in the event name.";
       error.style.display = "block";
@@ -138,7 +148,7 @@ nextPage1.addEventListener("click",
       errorBox.style.transform = "scale(1)";
     } else if (location_name.value == "") {
       error_text.innerHTML = "Please fill in the location name.";
-      error.style.display = "block"; 
+      error.style.display = "block";
       error.style.opacity = "1";
       errorBox.style.transform = "scale(1)";
     } else if (region_value == "") {
@@ -451,14 +461,11 @@ signupForm.addEventListener('submit', (e) => {
     date: date_calender,
     sex: sex_value,
     limit: form_number.value,
+    //ARRAY BUAT MATCHES_JOIN DAN PENDING
+    matches_join: ["D4T0Imix4NVhf8L0w8J3"],
+    pending: ["D4T0Imix4NVhf8L0w8J3"],
     //GANTI NAMA OWNER
     owner: "D4T0Imix4NVhf8L0w8J3"
-  }).then(function (docRef) {
-    doc_id = docRef.id;
-    db.collection('match').doc(doc_id).collection('matches_join').add({
-      user_id: "D4T0Imix4NVhf8L0w8J3"
-    })
-    db.collection('match').doc(doc_id).collection('pending').add({})
   })
 
   //GO TO FIRST SECTION OF THE FORM
@@ -535,3 +542,25 @@ $(document).keypress(
       event.preventDefault();
     }
 });
+
+// BIKIN CHAT DI REALTIME DATABASE DAN PUSH MESSAGE
+
+db_rd.ref('all_chats' + '/chats_4').once('value', function (message_object) {
+  // This index is mortant. It will help organize the chat in order
+  var index = parseFloat(message_object.numChildren()) + 1;
+  db_rd.ref('all_chats' + '/chats_4/' + `message_${index}`).set({
+    name: "joseph",
+    message: "hello",
+    index: index
+  })
+  // db_rd.ref('all_chats' + '/chats_3' + `message_${index}`).set({
+  //     name: parent.get_name(),
+  //     message: message,
+  //     index: index
+  //   })
+  //   .then(function () {
+  //     // After we send the chat refresh to get the new messages
+  //     parent.refresh_chat()
+  //   })
+})
+
