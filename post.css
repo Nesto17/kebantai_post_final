@@ -1211,6 +1211,10 @@ body {
     box-shadow: none;
   }
 
+  .left-tab-icon:hover + .left-tab-name {
+    padding: 0;
+  }
+
   .navigation-toggle {
     position: absolute;
     right: 0;
