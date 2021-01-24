@@ -20,11 +20,14 @@ db.settings({
   timestampsInSnapshots: true
 });
 
-function toggleMenu() {
-  var menuToggle = document.querySelector('.toggle');
-  var navigation = document.querySelector('.navigation');
+let menuToggle = document.querySelector('.navigation-toggle');
+let navigation = document.querySelector('.navigation');
+let darkWrapper = document.querySelector('.dark-wrapper');
+
+function toggleNav() {
   menuToggle.classList.toggle('active');
   navigation.classList.toggle('active');
+  darkWrapper.classList.toggle('active');
 }
 
 document.querySelector(".date-submit").addEventListener("click",
@@ -478,5 +481,33 @@ signupForm.addEventListener('submit', (e) => {
   sex_input.checked = true;
   sex_value = "anyone";
   sex_html.innerHTML = "Anyone can join";
+  checkboxDisclaimer.checked = false;
+  publishButton.style.opacity = 0.5;
+  publishButton.style.pointerEvents = 'none';
+  publishButton.disabled = true;
 })
 
+let publishButton = document.querySelector('.publish');
+let labelDisclaimer = document.querySelector('.agreement');
+let checkboxDisclaimer = document.querySelector('.agreement-checkbox');
+
+publishButton.disabled = true;
+
+labelDisclaimer.addEventListener('click', () => {
+  if (checkboxDisclaimer.checked === true) {
+    publishButton.disabled = false;
+    publishButton.style.opacity = 1;
+    publishButton.style.pointerEvents = 'unset';
+  } else {
+    publishButton.disabled = true;
+    publishButton.style.opacity = 0.5;
+    publishButton.style.pointerEvents = 'none';
+  }
+}); 
+
+$(document).keypress(
+  function(event){
+    if (event.which == '13') {
+      event.preventDefault();
+    }
+});

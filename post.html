@@ -14,16 +14,20 @@
 <body>
     <div class="wrapper">
         <header class="page-header">
-            <div id="logo">
-                <a href="#">KEBANTAI</a>
-            </div>
-            <div class="toggle" onclick="toggleMenu();"></div>
+            <div class="dark-wrapper" onclick="toggleNav()"></div>
+            <ul class="header-logo-tab">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Why Kebantai?</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div id="header-logo">KEBANTAI</div>
+            <div class="navigation-toggle" onclick="toggleNav();"></div>
             <ul class="navigation">
                 <li><a href="#" class="active-page">POST REQUESTS</a></li>
                 <li><a href="#">MATCHES</a></li>
                 <li><a href="#">SCHEDULE</a></li>
                 <li><a href="#">CHATROOM</a></li>
-                <li><a href="#">CONTACT</a></li>
                 <li><a href="#">PROFILE</a></li>
             </ul>
         </header>
@@ -255,12 +259,14 @@
                     <label class="form__subtitle">People preference</p>
                 </div>
                 <div class="buttons buttons-3">
-                    <button type="submit" class="next">PUBLISH</button>
-                    <div class="back back-3">BACK</div>
-                    <div class="agreement">
+                    <label class="agreement">
                         By using our platform, you agree that Kebantai is not responsible for whatever happens outside 
                         of the website. I.E. injury on the court, potential clashes, verbal harassment, etc.
-                    </div>
+                        <input type="checkbox" class="agreement-checkbox">
+                        <span class="agreement-checkmark"></span>
+                    </label>
+                    <button type="submit" class="next publish">PUBLISH</button>
+                    <div class="back back-3">BACK</div>
                 </div>
             </section>
 
