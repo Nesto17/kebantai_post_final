@@ -172,12 +172,12 @@ CalendarPicker.prototype._insertCalendarIntoWrapper = function () {
 
     this.calendarGrid.addEventListener('click', handleSelectedElement, false);
 
-    this.calendarGrid.addEventListener('keydown', (keyEvent) => {
-        keyEvent.preventDefault();
-        if (keyEvent.key !== 'Enter') return;
+    // this.calendarGrid.addEventListener('keydown', (keyEvent) => {
+    //     keyEvent.preventDefault();
+    //     if (keyEvent.key !== 'Enter') return;
 
-        handleSelectedElement(keyEvent);
-    }, false);
+    //     handleSelectedElement(keyEvent);
+    // }, false);
 }
 
 /**

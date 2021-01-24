@@ -20,15 +20,42 @@ db.settings({
   timestampsInSnapshots: true
 });
 
+let menuToggle = document.querySelector('.navigation-toggle');
+let rightTab = document.querySelector('.right-header-tab');
+let darkBackground = document.querySelector('.dark-background');
+
+let headerLogo = document.querySelector('.header-logo');
+let leftTab = document.querySelector('.left-header-tab');
+
+headerLogo.addEventListener('click', () => {
+  if (leftTab.classList.contains('active')) {
+    leftTab.classList.remove('active');
+    darkBackground.classList.remove('active');
+    headerLogo.classList.remove('active');
+    rightTab.classList.remove('active');
+  }
+  else {
+    leftTab.classList.add('active');
+    darkBackground.classList.add('active');
+    headerLogo.classList.add('active');
+  }
+});
+
+darkBackground.addEventListener('click', () => {
+  leftTab.classList.remove('active');
+  darkBackground.classList.remove('active');
+  headerLogo.classList.remove('active');
+
+  rightTab.classList.remove('active');
+});
+
+menuToggle.addEventListener('click', () => {
+  rightTab.classList.add('active');
+  darkBackground.classList.add('active');
+});
+
 //Initialize Realtime Database
 var db_rd = firebase.database()
-
-function toggleMenu() {
-  var menuToggle = document.querySelector('.toggle');
-  var navigation = document.querySelector('.navigation');
-  menuToggle.classList.toggle('active');
-  navigation.classList.toggle('active');
-}
 
 document.querySelector(".date-submit").addEventListener("click",
   function () {
@@ -485,7 +512,36 @@ signupForm.addEventListener('submit', (e) => {
   sex_input.checked = true;
   sex_value = "anyone";
   sex_html.innerHTML = "Anyone can join";
+  checkboxDisclaimer.checked = false;
+  publishButton.style.opacity = 0.5;
+  publishButton.style.pointerEvents = 'none';
+  publishButton.disabled = true;
 })
+
+let publishButton = document.querySelector('.publish');
+let labelDisclaimer = document.querySelector('.agreement');
+let checkboxDisclaimer = document.querySelector('.agreement-checkbox');
+
+publishButton.disabled = true;
+
+labelDisclaimer.addEventListener('click', () => {
+  if (checkboxDisclaimer.checked === true) {
+    publishButton.disabled = false;
+    publishButton.style.opacity = 1;
+    publishButton.style.pointerEvents = 'unset';
+  } else {
+    publishButton.disabled = true;
+    publishButton.style.opacity = 0.5;
+    publishButton.style.pointerEvents = 'none';
+  }
+}); 
+
+$(document).keypress(
+  function(event){
+    if (event.which == '13') {
+      event.preventDefault();
+    }
+});
 
 // BIKIN CHAT DI REALTIME DATABASE DAN PUSH MESSAGE
 
@@ -507,3 +563,4 @@ db_rd.ref('all_chats' + '/chats_4').once('value', function (message_object) {
   //     parent.refresh_chat()
   //   })
 })
+
