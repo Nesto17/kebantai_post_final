@@ -21,14 +21,38 @@ db.settings({
 });
 
 let menuToggle = document.querySelector('.navigation-toggle');
-let navigation = document.querySelector('.navigation');
-let darkWrapper = document.querySelector('.dark-wrapper');
+let rightTab = document.querySelector('.right-header-tab');
+let darkBackground = document.querySelector('.dark-background');
 
-function toggleNav() {
-  menuToggle.classList.toggle('active');
-  navigation.classList.toggle('active');
-  darkWrapper.classList.toggle('active');
-}
+let headerLogo = document.querySelector('.header-logo');
+let leftTab = document.querySelector('.left-header-tab');
+
+headerLogo.addEventListener('click', () => {
+  if (leftTab.classList.contains('active')) {
+    leftTab.classList.remove('active');
+    darkBackground.classList.remove('active');
+    headerLogo.classList.remove('active');
+    rightTab.classList.remove('active');
+  }
+  else {
+    leftTab.classList.add('active');
+    darkBackground.classList.add('active');
+    headerLogo.classList.add('active');
+  }
+});
+
+darkBackground.addEventListener('click', () => {
+  leftTab.classList.remove('active');
+  darkBackground.classList.remove('active');
+  headerLogo.classList.remove('active');
+
+  rightTab.classList.remove('active');
+});
+
+menuToggle.addEventListener('click', () => {
+  rightTab.classList.add('active');
+  darkBackground.classList.add('active');
+});
 
 document.querySelector(".date-submit").addEventListener("click",
   function () {
