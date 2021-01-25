@@ -948,23 +948,19 @@ body {
 .success {
   display: none;
   position: relative;
-  min-width: 380px;
-  height: 70px;
   margin-bottom: 2vh;
-
-  transform-origin: right;
-  transition: transform 500ms ease-in-out, opacity 100ms ease 400ms,
-    display 100ms ease 500ms;
 }
 
 .error-box,
 .success-box {
-  width: 100%;
   height: 60px;
+  min-width: 380px;
   border-radius: 7px;
+  padding: 0px 15px;
   box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.7);
   position: relative;
   overflow: hidden;
+  background: #fc3b3b;
 
   display: flex;
   align-items: center;
@@ -1063,7 +1059,7 @@ body {
   .left-tab-options {
     overflow: hidden;
     border-radius: 0;
-    padding: 5vh 200px 5vh 30px;
+    padding: 5vh 100px 5vh 20px;
     margin: 0;
     cursor: pointer;
 
@@ -1075,7 +1071,7 @@ body {
   }
 
   .left-tab-options:hover {
-    padding: 5vh 200px 5vh 30px;
+    padding: 5vh 200px 5vh 20px;
     background: #404161;
   }
 
@@ -1322,7 +1318,7 @@ body {
   }
 
   .page-2 {
-    height: 500px;
+    height: 600px;
   }
 
   .page-3 {
@@ -1511,12 +1507,14 @@ body {
   .error,
   .success {
     height: 55px;
-    min-width: 300px;
   }
 
   .error-box,
   .success-box {
     height: 50px;
+    width: 300px;
+    padding: 5px 15px;
+    min-width: 0;
   }
 
   .error-icon,
@@ -1569,7 +1567,7 @@ body {
   }
 }
 
-@media (max-width: 340px) {
+@media (max-width: 370px) {
   .wrapper {
     overflow-y: scroll;
   }
