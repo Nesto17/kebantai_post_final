@@ -33,8 +33,7 @@ headerLogo.addEventListener('click', () => {
     darkBackground.classList.remove('active');
     headerLogo.classList.remove('active');
     rightTab.classList.remove('active');
-  }
-  else {
+  } else {
     leftTab.classList.add('active');
     darkBackground.classList.add('active');
     headerLogo.classList.add('active');
@@ -216,8 +215,42 @@ prevPage1.addEventListener("click",
 
 nextPage2.addEventListener("click",
   function () {
-    let pass = hour_check(date_calender);
-    if (pass) {
+    // CHECK TIME
+    const current_month = new Date().getMonth();
+    const current_date = new Date().getDate();
+    let current_hour = new Date().getHours();
+    const current_minute = new Date().getMinutes();
+    let calender_month = new Date(date_calender).getMonth();
+    let calender_date = new Date(date_calender).getDate();
+    const input_time = document.getElementsByName("time");
+    var i;
+    var temp = "";
+
+    for (i = 0; i < input_time.length; i++) {
+      if (input_time[i].checked == true) {
+        temp = input_time[i].value;
+      }
+    }
+
+    //TURN INTO NUMBER
+    var temp_list = temp.split(":");
+    var hour_input = Number(temp_list[0]);
+    if (current_minute > 0) {
+      current_hour += 1;
+    }
+    var hour_diff = hour_input - current_hour;
+
+    if (calender_month == current_month && calender_date == current_date && hour_input < current_hour) {
+      error_text.innerHTML = "Your desired time has passed.";
+      error.style.display = "block";
+      error.style.opacity = "1";
+      errorBox.style.transform = "scale(1)";
+    } else if (calender_month == current_month && calender_date == current_date && hour_diff < 3) {
+      error_text.innerHTML = "You must make an event three hours before your desired time.";
+      error.style.display = "block";
+      error.style.opacity = "1";
+      errorBox.style.transform = "scale(1)";
+    } else {
       page1.classList.add('page-1-stateB');
       page2.classList.add('page-2-stateB');
       page3.classList.add('page-3-stateB');
@@ -228,11 +261,6 @@ nextPage2.addEventListener("click",
       error.style.display = "none";
       error.style.opacity = "0";
       errorBox.style.transform = "scale(0.01)";
-    } else {
-      error_text.innerHTML = "Time span is too close.";
-      error.style.display = "block";
-      error.style.opacity = "1";
-      errorBox.style.transform = "scale(1)";
     }
   }
 );
@@ -370,38 +398,38 @@ date_wheel_button.addEventListener("click", () => {
 })
 
 //CHECK IF THE TIME HAS PASSED
-function hour_check(date_calender) {
-  const current_month = new Date().getMonth();
-  const current_date = new Date().getDate();
-  let current_hour = new Date().getHours();
-  const current_minute = new Date().getMinutes();
-  let calender_month = new Date(date_calender).getMonth();
-  let calender_date = new Date(date_calender).getDate();
-  const input_time = document.getElementsByName("time");
-  var i;
-  var temp = "";
+// function hour_check(date_calender) {
+//   const current_month = new Date().getMonth();
+//   const current_date = new Date().getDate();
+//   let current_hour = new Date().getHours();
+//   const current_minute = new Date().getMinutes();
+//   let calender_month = new Date(date_calender).getMonth();
+//   let calender_date = new Date(date_calender).getDate();
+//   const input_time = document.getElementsByName("time");
+//   var i;
+//   var temp = "";
 
-  for (i = 0; i < input_time.length; i++) {
-    if (input_time[i].checked == true) {
-      temp = input_time[i].value;
-    }
-  }
+//   for (i = 0; i < input_time.length; i++) {
+//     if (input_time[i].checked == true) {
+//       temp = input_time[i].value;
+//     }
+//   }
 
-  //TURN INTO NUMBER
-  var temp_list = temp.split(":");
-  var hour_input = Number(temp_list[0]);
-  if (current_minute > 0) {
-    current_hour += 1;
-  }
-  var hour_diff = hour_input - current_hour;
+//   //TURN INTO NUMBER
+//   var temp_list = temp.split(":");
+//   var hour_input = Number(temp_list[0]);
+//   if (current_minute > 0) {
+//     current_hour += 1;
+//   }
+//   var hour_diff = hour_input - current_hour;
 
-  //check hour
-  if (calender_month == current_month && calender_date == current_date && hour_diff < 3) {
-    return false;
-  } else {
-    return true;
-  }
-}
+//   //check hour
+//   if (calender_month == current_month && calender_date == current_date && hour_diff < 3) {
+//     return false;
+//   } else {
+//     return true;
+//   }
+// }
 
 /*
 // FIREBASE
@@ -442,19 +470,17 @@ const signupForm = document.querySelector(".content");
 let doc_id = "";
 
 //Save data to Firestore
-
 signupForm.addEventListener('submit', (e) => {
-  //SET SUCCESS NOTIFICATION
-  successBox.style.display = "block";
-  successBox.style.transform = "scale(1)";
-  successBox.style.opacity = "1";
-
   e.preventDefault();
 
+  let event_name_form = signupForm.event_name.value;
+  let location_name_form = signupForm.location_name.value;
+  let address_form = signupForm.address.value;
+
   db.collection('match').add({
-    event_name: signupForm.event_name.value,
-    location: signupForm.location_name.value,
-    address: signupForm.address.value,
+    event_name: event_name_form.trim(),
+    location: location_name_form.trim(),
+    address: address_form.trim(),
     sport: sport_value,
     region: region_value,
     time: signupForm.time.value,
@@ -516,6 +542,11 @@ signupForm.addEventListener('submit', (e) => {
   publishButton.style.opacity = 0.5;
   publishButton.style.pointerEvents = 'none';
   publishButton.disabled = true;
+
+  //SET SUCCESS NOTIFICATION
+  successBox.style.display = "block";
+  successBox.style.transform = "scale(1)";
+  successBox.style.opacity = "1";
 })
 
 let publishButton = document.querySelector('.publish');
@@ -534,33 +565,32 @@ labelDisclaimer.addEventListener('click', () => {
     publishButton.style.opacity = 0.5;
     publishButton.style.pointerEvents = 'none';
   }
-}); 
+});
 
 $(document).keypress(
-  function(event){
+  function (event) {
     if (event.which == '13') {
       event.preventDefault();
     }
-});
+  });
 
 // BIKIN CHAT DI REALTIME DATABASE DAN PUSH MESSAGE
 
-db_rd.ref('all_chats' + '/chats_4').once('value', function (message_object) {
-  // This index is mortant. It will help organize the chat in order
-  var index = parseFloat(message_object.numChildren()) + 1;
-  db_rd.ref('all_chats' + '/chats_4/' + `message_${index}`).set({
-    name: "joseph",
-    message: "hello",
-    index: index
-  })
-  // db_rd.ref('all_chats' + '/chats_3' + `message_${index}`).set({
-  //     name: parent.get_name(),
-  //     message: message,
-  //     index: index
-  //   })
-  //   .then(function () {
-  //     // After we send the chat refresh to get the new messages
-  //     parent.refresh_chat()
-  //   })
-})
-
+// db_rd.ref('all_chats' + '/chats_4').once('value', function (message_object) {
+//   // This index is mortant. It will help organize the chat in order
+//   var index = parseFloat(message_object.numChildren()) + 1;
+//   db_rd.ref('all_chats' + '/chats_4/' + `message_${index}`).set({
+//     name: "joseph",
+//     message: "hello",
+//     index: index
+//   })
+//   // db_rd.ref('all_chats' + '/chats_3' + `message_${index}`).set({
+//   //     name: parent.get_name(),
+//   //     message: message,
+//   //     index: index
+//   //   })
+//   //   .then(function () {
+//   //     // After we send the chat refresh to get the new messages
+//   //     parent.refresh_chat()
+//   //   })
+// })
