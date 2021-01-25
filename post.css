@@ -1059,7 +1059,7 @@ body {
   .left-tab-options {
     overflow: hidden;
     border-radius: 0;
-    padding: 5vh 100px 5vh 20px;
+    padding: 5vh 220px 5vh 20px;
     margin: 0;
     cursor: pointer;
 
@@ -1071,7 +1071,7 @@ body {
   }
 
   .left-tab-options:hover {
-    padding: 5vh 200px 5vh 20px;
+    padding: 5vh 220px 5vh 20px;
     background: #404161;
   }
 
@@ -1165,7 +1165,7 @@ body {
   .right-tab-options {
     overflow: hidden;
     border-radius: 0;
-    padding: 5vh 200px 5vh 30px;
+    padding: 5vh 220px 5vh 30px;
     margin: 0;
 
     display: flex;
@@ -1173,7 +1173,7 @@ body {
   }
 
   .right-tab-options:hover {
-    padding: 5vh 200px 5vh 30px;
+    padding: 5vh 220px 5vh 30px;
     border-radius: 0;
   }
 
