@@ -718,97 +718,6 @@ body {
   pointer-events: none;
 }
 
-.error-section,
-.success-section {
-  position: fixed;
-  /* align-self: flex-end; */
-  bottom: 0;
-  right: 20px;
-  z-index: 10;
-}
-
-.error,
-.success {
-  display: none;
-  position: relative;
-  margin-bottom: 2vh;
-}
-
-.error-box,
-.success-box {
-  height: 60px;
-  min-width: 380px;
-  border-radius: 7px;
-  padding: 0px 15px;
-  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.7);
-  position: relative;
-  overflow: hidden;
-  background: #fc3b3b;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.error-box {
-  background: #fc3b3b;
-}
-
-.success-box {
-  background: #4caa53;
-}
-
-.error-circle,
-.success-circle {
-  position: absolute;
-  background: #292a45;
-  border-radius: 50%;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  width: 1.6rem;
-  height: 1.6rem;
-  right: -8px;
-  top: -10px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: transform 0.3s;
-  cursor: pointer;
-  z-index: 11;
-}
-
-.error-circle:hover,
-.success-circle:hover {
-  transform: scale(1.1);
-}
-
-.error-close,
-.success-close {
-  transform: rotate(45deg);
-  font-size: 26px;
-  color: #fc3b3b;
-}
-
-.error-icon,
-.success-icon {
-  position: absolute;
-  width: 65px;
-  height: 65px;
-  left: -17px;
-  bottom: -10px;
-}
-
-.error-text,
-.success-text {
-  position: relative;
-  font-size: 16px;
-  color: white;
-  font-weight: 400;
-  /* text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7); */
-  margin-left: 40px;
-}
-
 @media (max-width: 1024px) {
 
   .hours {
@@ -892,19 +801,6 @@ body {
 
   .buttons {
     margin: 0;
-  }
-
-  .error-box,
-  .success-box {
-    height: 55px;
-  }
-
-  .error-icon,
-  .success-icon {
-    width: 60px;
-    height: 60px;
-    left: -10px;
-    bottom: -8px;
   }
 
   .buttons-3 {
@@ -1103,38 +999,6 @@ body {
     display: none;
   }
 
-  .error-section,
-  .success-section {
-    bottom: 4vh;
-  }
-
-  .error,
-  .success {
-    height: 55px;
-  }
-
-  .error-box,
-  .success-box {
-    height: 50px;
-    width: 300px;
-    padding: 5px 15px;
-    min-width: 0;
-  }
-
-  .error-icon,
-  .success-icon {
-    width: 50px;
-    height: 50px;
-    left: -5px;
-    bottom: -5px;
-  }
-
-  .error-text,
-  .success-text {
-    font-size: 14px;
-    font-weight: 500;
-  }
-
   .agreement {
     width: 330px;
     font-size: 9px;
@@ -1180,23 +1044,6 @@ body {
 
   .buttons {
     margin-top: 10px;
-  }
-
-  .error,
-  .success {
-    min-width: 250px;
-  }
-
-  .error-text,
-  .success-text {
-    margin-left: 20px;
-    font-size: 13px;
-  }
-
-  .error-icon,
-  .success-icon {
-    left: -10px;
-    bottom: -8px;
   }
 
   .agreement {
