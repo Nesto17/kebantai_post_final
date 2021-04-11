@@ -188,7 +188,7 @@ body {
 
 .form__subtitle {
   align-self: flex-start;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 15px;
   background: #37384b;
   text-align: center;
@@ -231,7 +231,6 @@ body {
 
 .form__input:focus + .form__subtitle {
   background: #febc2f;
-  font-weight: 600;
 }
 
 .form__input:hover {
